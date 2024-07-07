@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Akaya+Telivigala&family=My+Soul&family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* colors */
+
+  --primary-color : #363636;
+  --complementary : #fbfcf8;
+  --secondary-colot: #FFD2D9;
+  --tertiary-color: #FF536D;
+
+  /* fonts  */
+
+  --primary-font : "Akaya Telivigala", system-ui;
+  --secondary-font: "My Soul", cursive;
+  --tertiary-font : "Nunito Sans", sans-serif;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body{
+  color: var(--primary-color);
+  background-color: var(--complementary);
+  font-family: var(--primary-font);
+}
+body.darkmode{
+  background-color: var(--primary-color);
+  font-family: var(--primary-font);
+}
+/* Navbar */
+.navbar ul li a {
+  transition: all 0.3s ease;
+ }
+ 
+.navbar ul li a:hover {
+  color: var(--tertiary-color);
+ }
+ 
+.navbar ul li a.active {
+  color: var(--tertiary-color);
+ } 
