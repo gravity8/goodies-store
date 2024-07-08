@@ -1,31 +1,26 @@
 import { NavLink } from 'react-router-dom';
-
 import { FaSun } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import { BsCart } from "react-icons/bs";
 import { HiBars3 } from "react-icons/hi2";
+import { RiCloseLargeFill } from "react-icons/ri";
 
+import { useState } from 'react';
 
-
+import Logo from "../assets/companyLogo.svg"
 
 
 const Navbar = () => {
-
-  // //To set a nav link active
-  //   const setNavLinkActive =(elementToSetActive)=>{
-  //     const allLinks = document.querySelectorAll(".navlinks>li");
-  //     // allLinks.forEach(el=>{
-  //     //     if (el !== elementToSetActive) el.classList.remove("active")
-  //     // })
-  //     // elementToSetActive.classList.add("active")
-  //   }
-
+    const [darkMode, setDarkMode] = useState(false);
     // To toggle
     const  toggleDarkMode = () => {
-      var element = document.body;
-      element.classList.toggle("dark-mode");
-      console.log(element)
+      setDarkMode(!darkMode);
+        if (!darkMode) {
+            document.body.classList.add('dark-mode');
+        } else {
+            document.body.classList.remove('dark-mode');
+        }
     }
 
     //to toggle menu for the mobile screen
@@ -41,38 +36,43 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="navbar flex">
+    <nav className="navbar flex justify-between items-center px-[1rem] md:px-[5rem] lg:px-[10rem] py-[15px] z-[11] sticky top-0">
         <div className="nav-logo">
-          <NavLink to={"/"}>Logo.</NavLink>
+          <NavLink to={"/"}>
+            <img src={Logo} loading="lazy"></img>
+          </NavLink>
         </div>
-        <div className="navlinks-container w-[]">
+        <div className="navlinks-container">
             <div className="close-X" onClick={toggleMenu}>
-              <i className="fa-regular fa-x"></i>
+              <RiCloseLargeFill size={21} />
             </div>
-            <ul className="navlinks flex">
+            <ul className="navlinks flex gap-10">
                 <li>
                   <NavLink to={"/"}>Home</NavLink>
                 </li>
                 <li>
                   <NavLink to={"/product-listing"}>Products</NavLink>
                 </li>
+                <li>
+                  <NavLink to={"/contact"}> Contact</NavLink>
+                </li>
             </ul>
         </div>
-        <div className="flex justify-between gap-[20px] items-center">
+        <div className="flex justify-between gap-[2.5rem] items-center">
 
             <button className="darkmode-toggle" onClick={toggleDarkMode}>
-                <FaSun />
-                <FaMoon />
-                <div className="sliding-bg"></div>
+                {
+                  darkMode ? (<FaSun size={21} />) : (<FaMoon size={21} />)
+                }
             </button>
             <div>
               <NavLink to="/cart">
-                < BsCart />
+                < BsCart size={21}/>
               </NavLink>
             </div>
-            <FiSearch />
+            <FiSearch size={21} />
             <div className="openNav-bars text-[20px]" onClick={toggleMenu}>
-                <HiBars3 />
+                <HiBars3 size={24} />
             </div>
         </div>
         

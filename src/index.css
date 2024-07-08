@@ -6,8 +6,10 @@
 
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 1440px;
+  box-sizing: border-box;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,38 +18,36 @@
 
   /* colors */
 
-  --primary-color : #363636;
-  --complementary : #fbfcf8;
-  --secondary-colot: #FFD2D9;
-  --tertiary-color: #FF536D;
+  --primary-color : #1f1e1e;
+  --complementary : #fdf8fb;
+  --secondary-color: #FFD2D9;
+  --tertiary-color: #EC566D;
 
   /* fonts  */
-
   --primary-font : "Akaya Telivigala", system-ui;
   --secondary-font: "My Soul", cursive;
   --tertiary-font : "Nunito Sans", sans-serif;
-}
-
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
 }
 
 body{
   color: var(--primary-color);
   background-color: var(--complementary);
   font-family: var(--primary-font);
+  transition: color 0.1s ease;
+  scroll-behavior: smooth;
 }
-body.darkmode{
+
+body.dark-mode {
   background-color: var(--primary-color);
+  color: var(--complementary); 
   font-family: var(--primary-font);
 }
+
 /* Navbar */
-.navbar ul li a {
-  transition: all 0.3s ease;
- }
- 
+
+.navbar{
+  background-color: var(--complementary);
+}
 .navbar ul li a:hover {
   color: var(--tertiary-color);
  }
@@ -55,3 +55,157 @@ body.darkmode{
 .navbar ul li a.active {
   color: var(--tertiary-color);
  } 
+
+.dark-mode nav{
+  background-color: var(--primary-color);
+}
+
+nav>.navlinks-container{
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.3s ease-in;
+}
+
+nav>.navlinks-container>ul{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 20px; */
+}
+
+nav>.navlinks-container{
+  width: 35%;
+  display: flex;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.3s ease-in;
+}
+
+nav>.navlinks-container>ul{
+  width:100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* gap: 20px; */
+}
+
+nav>.navlinks-container>.close-X{
+  font-size: 24px;
+  color: var(--primary-color);
+  display: none;
+  width: 100%;
+  justify-content: start;
+  padding-left: 30px;
+  padding-top: 30px;
+  margin-bottom: 50px;
+}
+
+.dark-mode nav>.navlinks-container>.close-X{
+  color: var(--complementary);
+}
+.openNav-bars, .openNav-bars>svg{
+  display: none;
+}
+
+/* Home */
+.hero-section{
+  height: 95vh;
+  background-image: url("./assets/hero-image.png");
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-clip: content-box;
+}
+.hero-text{
+  font-family: var(--secondary-font);
+  color: var(--complementary);
+  font-size: 6vw; /* Use viewport width units for responsive text size */
+  margin: 0 1rem;
+  z-index: 5;
+}
+.hero-button{
+  font-size: 1rem;
+  background-color: var(--primary-color);
+  color: var(--complementary);
+  padding: 0.4rem 6rem;
+  z-index: 10;
+  transition: all 0.3s ease;
+}
+.hero-button:hover{
+  background-color: var(--secondary-color);
+}
+
+.footer{
+  background-color: var(--primary-color);
+  height: 45vh;
+  padding: 20px;
+  margin-top: 50px;
+}
+
+.footer div>h3{
+  font-family: var(--secondary-font);
+  font-size: 1.5rem;
+}
+
+.footer div>a{
+  transition: all 0.2s ease;
+}
+
+.footer div>a:hover{
+  color: var(--tertiary-color);
+}
+@media (max-width: 768px) {
+  nav>.navlinks-container{
+      position: fixed;
+      flex-direction: column;
+      background-color: white;
+      border: 0.8px solid rgba(84, 84, 84, 0.74);
+      width: 70%;
+      height: 100vh;
+      z-index: 2;
+      right: -70%;
+      top: 0;
+  }
+  .dark-mode nav>.navlinks-container{
+      background-color: #0e1111;
+  }
+  nav>.navlinks-container.active{
+      top: 0;
+      bottom: 0;
+      right: 0;
+  }
+  nav>.navlinks-container>ul{
+      flex-direction: column;
+      gap: 30px;
+  }
+  nav>.navlinks-container>.close-X{
+      display: flex;
+  }
+  .hero-text{
+    font-size: 14vw;
+    text-align: center;
+  }
+  .hero-button{
+    padding: 0.7rem 6rem;
+  }
+  .hero-button:hover{
+    background: var(--primary-color);
+    color: var(--complementary);
+  }
+  .footer{
+    height: 70vh;
+    padding: 20px;
+  }
+  .openNav-bars, .openNav-bars>svg{
+    display: inline;
+  }
+  .nav-logo{
+    width: 15vw;
+    height: 15vw !important;
+  }
+  .nav-logo img{
+    width: 100%;
+    height: 100%;
+  }
+}
