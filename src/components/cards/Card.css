@@ -1,8 +1,14 @@
 .card{
-    width: calc(100%/3 - 20px);
+    flex: 0 0 31.5%;
+    margin-bottom: 30px;
     height: 418px;
     box-shadow: 2px 3px 5px 0px rgba(117, 117, 117, 0.5);
 }
+
+.card:not(:nth-child(3n)) {
+ margin-right: 2%; /* Apply margin-right except on multiples of 3 */
+}
+
 .dark-mode .card{
     box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.5);
 }
@@ -69,6 +75,10 @@
     align-items: center;
     background-color: transparent;
 }
+.dark-mode .card input{
+    border-left: 1px solid var(--complementary);
+    border-right: 1px solid var(--complementary);
+}
 .card input:focus{
     outline: 0;
 }
@@ -77,8 +87,12 @@
     border-color: var(--complementary);
 }
 
-@media (max-width: 528px){
+@media (max-width: 800px){
     .card{
-        width: calc(100%);
+        flex: 1 ;
+        width: 100%;
+    }
+    .card:not(:nth-child(3n)) {
+        margin-right: 0; /* Apply margin-right except on multiples of 3 */
     }
 }

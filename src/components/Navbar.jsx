@@ -6,13 +6,16 @@ import { BsCart } from "react-icons/bs";
 import { HiBars3 } from "react-icons/hi2";
 import { RiCloseLargeFill } from "react-icons/ri";
 
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 
 import Logo from "../assets/companyLogo.svg"
+import CartContext from '../context/CartContext';
 
 
 const Navbar = () => {
     const [darkMode, setDarkMode] = useState(false);
+    const {cartItems} = useContext(CartContext);
+
     // To toggle
     const  toggleDarkMode = () => {
       setDarkMode(!darkMode);
@@ -67,7 +70,11 @@ const Navbar = () => {
             </button>
             <div>
               <NavLink to="/cart">
-                < BsCart size={21}/>
+                <div className='relative'>
+                  < BsCart size={21}/>
+                  <span className=' absolute -top-3 -right-3 px-[9px] py-[1px] rounded-full bg-[#118A11] text-white'>{cartItems.length}</span>
+                </div>
+                
               </NavLink>
             </div>
             <FiSearch size={21} />

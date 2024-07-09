@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <React.Fragment>
       <Header />
-      <ProductSection header={"Cake"}/>
+      <ProductSection header={"Cakes"}/>
       <ProductSection header={"Pastries"}/>
       <ProductSection header={"Bread"}/>
     </React.Fragment>
