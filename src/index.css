@@ -333,9 +333,18 @@ nav>.navlinks-container>.close-X{
   transition: all 0.3s;
 }
 
+.dark-mode .checkoutPage button{
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
 .checkoutPage button:hover{
   background-color: var(--secondary-color);
   color: var(--primary-color);
+}
+
+.dark-mode .checkoutPage .order-summary{
+  background-color: transparent;
 }
 
 .checkoutPage .item-summary{

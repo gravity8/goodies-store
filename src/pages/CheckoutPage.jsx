@@ -61,7 +61,7 @@ const CheckoutPage = ({setSuccessMessage}) => {
           >Place Order</button>
         </div>
         <div className="flex flex-col w-full md:w-[40%] gap-10 h-[60vh] md:h-[unset]">
-          <div className="mb-10 bg-[#fdf8fb] shadow-md rounded-[5px] p-5 relative flex-1">
+          <div className="mb-10 bg-[#fdf8fb] shadow-md rounded-[5px] p-5 relative flex-1 order-summary">
             <h2 className="!text-[1.5rem]">Order Summary</h2>
             <div className="flex justify-between">
               <div>
