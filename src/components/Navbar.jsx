@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { NavLink } from 'react-router-dom';
 import { FaSun } from "react-icons/fa6";
 import { FaMoon } from "react-icons/fa";
@@ -12,9 +13,10 @@ import Logo from "../assets/companyLogo.svg"
 import CartContext from '../context/CartContext';
 
 
-const Navbar = () => {
+const Navbar = ({toggleSearch}) => {
     const [darkMode, setDarkMode] = useState(false);
     const {cartItems} = useContext(CartContext);
+  
 
     // To toggle
     const  toggleDarkMode = () => {
@@ -77,7 +79,9 @@ const Navbar = () => {
                 
               </NavLink>
             </div>
-            <FiSearch size={21} />
+            <div onClick={toggleSearch}>
+              <FiSearch size={21} />  
+            </div>
             <div className="openNav-bars text-[20px]" onClick={toggleMenu}>
                 <HiBars3 size={24} />
             </div>

@@ -363,6 +363,15 @@ nav>.navlinks-container>.close-X{
 .modal p{
   font-family: "Poppins", sans-serif;
 }
+
+
+/* Search Component */
+
+.search-component input {
+  font-family: "Poppins", sans-serif;
+}
+
+
 @media (max-width: 768px) {
   nav>.navlinks-container{
       position: fixed;

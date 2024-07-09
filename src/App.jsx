@@ -8,13 +8,16 @@ import CheckoutPage from './pages/CheckoutPage'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { FaCheck } from "react-icons/fa";
+import { FiSearch } from "react-icons/fi";
 
 function App() {
 
   const [successMessage, setSuccessMessage] = useState("")
+  const [search, setSearch ] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
 
   const toggleBodyScrollProperty = () => {
-    if(successMessage){
+    if(successMessage || search){
       document.body.classList.add("no-scroll")
     }
     else{
@@ -24,11 +27,42 @@ function App() {
 
   useEffect(()=>{
     toggleBodyScrollProperty();
-  },[successMessage])
+  },[successMessage, search])
+
+  const toggleSearch= () =>{
+    setSearch(!search);
+  }
+
+  const searchItem = () => {
+    // For now toggle search
+
+    toggleSearch()
+  }
   
   return (
     <div className='relative'>
-      <Navbar />
+      <div 
+        onClick={toggleSearch}
+        className={`search-component ${search ? "flex" : "hidden"} w-full fixed z-[400] bg-black/25 h-[100vh]`}>
+          <div 
+            onClick={e=>e.stopPropagation()}
+            className={`${search ? "flex" : "hidden"} fixed w-full bg-white py-10 md:py-14 z-[400] flex justify-center`}>
+              <div  className='flex border-[0.5px] rounded-lg py-4 w-[80%]  md:w-[40%] px-5 items-center'>
+                <input 
+                  className='flex-1 bg-transparent border-none ps-3 focus:outline-none'
+                  value={searchQuery}
+                  onChange={(e)=>setSearchQuery(e.target.value)}
+                  type="text"
+                  placeholder='Search for an item'
+                  />  
+                <div onClick={searchItem}>
+                  <FiSearch size={21} />  
+                </div>
+              </div>    
+        </div>
+      </div>
+      
+      <Navbar toggleSearch={toggleSearch}/>
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/product-listing" element={<ProductListingPage />} />
