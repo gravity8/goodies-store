@@ -35,7 +35,6 @@ function App() {
 
   const searchItem = () => {
     // For now toggle search
-
     toggleSearch()
   }
   
@@ -56,7 +55,7 @@ function App() {
                   placeholder='Search for an item'
                   />  
                 <div onClick={searchItem}>
-                  <FiSearch size={21} />  
+                  <FiSearch size={21}/>  
                 </div>
               </div>    
         </div>

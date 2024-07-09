@@ -87,7 +87,7 @@
     border-color: var(--complementary);
 }
 
-@media (max-width: 800px){
+@media (max-width: 650px){
     .card{
         flex: 1 ;
         width: 100%;
@@ -96,3 +96,9 @@
         margin-right: 0; /* Apply margin-right except on multiples of 3 */
     }
 }
+@media (max-width: 1350px) {
+    .card{
+        flex: 1 ;
+        width: calc(100%/2);
+    }
+  }

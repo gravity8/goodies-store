@@ -70,7 +70,7 @@ const ProductSection = ({header}) => {
         <p className="mb-10 see-all">
           <Link to={`product-listing#${header.toLowerCase()}`}>See all</Link>
         </p>
-        <div className="px-8 md:px-[10rem] flex-col md:flex-row flex flex-wrap w-full">
+        <div className=" px-[5rem] md:px-[10rem] flex-col md:flex-row flex flex-wrap w-full">
           {
             items.length>0 && items.map((item, index)=>(
               <CakeCard  key={index} item={item}/>
