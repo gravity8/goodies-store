@@ -15,7 +15,7 @@ const CartPage = () => {
 
   return (
     <div className="cart">
-      <h2 className="!text-[2.4rem] md:!text-[3rem] text-left md:text-center">Cart</h2>
+      <h2 className="!text-[2.2rem] md:!text-[2.5rem] text-left md:ps-[8rem]">Cart</h2>
       {cartItems.length === 0 ? (
         <p className="text-center my-24">Your cart is empty.</p>
       ) : (
