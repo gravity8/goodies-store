@@ -17,7 +17,7 @@ const ProductSection = ({header, show, setShow, getItemForDescription}) => {
 
   useEffect(()=>{
     setLoading(true);
-    axios.get(`/api/?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
+    axios.get(`/api?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
     .then((response) => {
       console.log("response",response)
       setItems(response.data.items);
