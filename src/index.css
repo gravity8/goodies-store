@@ -383,6 +383,10 @@ nav>.navlinks-container>.close-X{
   font-family: "Poppins", sans-serif;
 }
 
+.pagination button.active{
+  background-color: var(--tertiary-color);
+  color: var(--complementary);
+}
 
 @media (max-width: 768px) {
   nav>.navlinks-container{
