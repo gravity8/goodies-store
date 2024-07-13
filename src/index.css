@@ -8,7 +8,7 @@
 :root {
   padding: 0;
   margin: 0 auto;
-  max-width: 1440px;
+  max-width: 2300px;
   box-sizing: border-box;
 
   font-synthesis: none;
@@ -50,6 +50,9 @@ body.dark-mode {
 .navbar{
   background-color: var(--complementary);
 }
+.navbar ul li a{
+  font-size: 24px;
+ }
 .navbar ul li a:hover {
   color: var(--tertiary-color);
  }
@@ -131,9 +134,17 @@ nav>.navlinks-container>.close-X{
   font-size: 1rem;
   background-color: var(--primary-color);
   color: var(--complementary);
-  padding: 0.4rem 6rem;
+  width: 300px;
+  height: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   z-index: 10;
   transition: all 0.3s ease;
+}
+.hero-button p{
+  font-size: 24px;
 }
 .hero-button:hover{
   background-color: var(--secondary-color);
@@ -301,7 +312,7 @@ nav>.navlinks-container>.close-X{
 }
 .productListing h1{
   font-family: var(--secondary-font);
-  font-size: 2rem;
+  font-size: 36px;
 }
 
 
@@ -310,12 +321,12 @@ nav>.navlinks-container>.close-X{
 .checkoutPage input{
   border: 1px solid #D0CDCD;
   background-color: transparent;
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
+  width: 37.78vw;
+  height: 72px;
+  border-radius: 0.87vw;
   padding-left: 20px;
   font-family: "Roboto", sans-serif;
-  font-size: 1rem;
+  font-size: 24px;
   margin-bottom: 40px;
 }
 .checkoutPage input:focus{
@@ -325,8 +336,9 @@ nav>.navlinks-container>.close-X{
 .checkoutPage button{
   background-color: var(--primary-color);
   color: var(--complementary);
-  width: 100%;
-  height: 50px;
+  width: 37.78vw;
+  height: 72px;
+  font-size: 24px;
   border-radius: 10px;
   padding-left: 20px;
   font-family: "Roboto", sans-serif;
@@ -435,5 +447,11 @@ nav>.navlinks-container>.close-X{
   .modal{
     height: 350px;
     width: 90%;
+  }
+  .checkoutPage input{
+    width: 100%;
+  }
+  .checkoutPage button{
+    width: 100%;
   }
 }

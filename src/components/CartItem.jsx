@@ -48,8 +48,8 @@ const CartItem = ({
         >
         </div>
         <div className="flex flex-col items-start">
-          <h3>{item.name}</h3>
-          <p>Size: {item.size}</p>
+          <h3 className="!text-[24px]">{item.name}</h3>
+          <p className="!text-[20px]">Size: {item.size}</p>
         </div>
       </div>
       <div className="flex border absolute md:relative bottom-8 right-15 md:bottom-0 border-grey rounded-lg quantity-control">
@@ -62,7 +62,7 @@ const CartItem = ({
         <button onClick={handleIncrease}>+</button>
       </div>
       <div className="flex flex-col md:gap-2 gap-1 absolute md:relative bottom-20 md:bottom-0 right-0 items-center">
-        <p>${item.price * quantity}</p>
+        <p className="!text-[20px]">${item.price * quantity}</p>
         <button className="remove-button flex justify-center" onClick={() => handleRemoveFromCart(item.id)}>
           <MdDelete size={24}/>
         </button>

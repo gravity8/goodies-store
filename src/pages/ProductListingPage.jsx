@@ -6,71 +6,29 @@ import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import ProductLists from "../components/productlisting/ProductLists";
 import { v4 as uuidv4 } from 'uuid';
+import axios from "axios";
 
+const baseUrl = import.meta.env.VITE_BASE_URL;
+const ORG_ID = import.meta.env.VITE_ORG_ID;
+const APP_ID = import.meta.env.VITE_APP_ID;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 const ProductListingPage = () => {
   const location = useLocation();
   const [activeOption, setActiveOption] = useState("cakes");
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(false)
 
-  const optionItems = [
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    },
-    {
-      id: uuidv4(),
-      src :"https://images.unsplash.com/photo-1606890737304-57a1ca8a5b62?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxleHBsb3JlLWZlZWR8MjV8fHxlbnwwfHx8fHw%3D",
-      name: "Chocolate cake",
-      price: 10,
-      sizes : ["S","M","L"]
-    }
-  ]
+  useEffect(()=>{
+    setLoading(true);
+    axios.get(`/api/products?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
+    .then((response) => {
+      setItems(response.data.items);
+      setLoading(false);
+    });
+  },[])
 
+  
   useEffect(() => {
     const hash = location.hash.replace("#", "");
     if (hash) {
@@ -85,16 +43,16 @@ const ProductListingPage = () => {
   const renderItems = () => {
     switch (activeOption) {
       case 'cakes':
-        return <ProductLists id={"cakes"} items={optionItems} />
+        return <ProductLists loading={loading} id={"cakes"} items={items.filter((item)=>item.categories[0]?.name==="cakes")} />
       case 'pastries':
-        return <ProductLists id={"pastries"} items={optionItems} />
+        return <ProductLists loading={loading} id={"pastries"} items={items.filter((item)=>item.categories[0]?.name==="pastries")} />
       case 'bread':
-        return <ProductLists id={"bread"} items={optionItems} />
+        return <ProductLists loading={loading} id={"bread"} items={items.filter((item)=>item.categories[0]?.name==="bread")} />
     }
   };
 
   return (
-    <div className="productListing px-[1rem] md:px-[10rem]">
+    <div className="productListing px-[1rem] md:px-[12vw]">
       <h1>Product Listing</h1>
 
       <div className="options flex gap-6 md:gap-16 justify-center py-10 ">

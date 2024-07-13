@@ -39,7 +39,7 @@ function App() {
   }
   
   return (
-    <div className='relative'>
+    <div className='relative w-full'>
       <div 
         onClick={toggleSearch}
         className={`search-component ${search ? "flex" : "hidden"} w-full fixed z-[400] bg-black/25 h-[100vh]`}>

@@ -11,11 +11,11 @@ const CartPage = () => {
       cartItems,
     } = useContext(CartContext)
     
-  const total = subtotal + 5; // Assuming a fixed delivery fee of $5
+  const total = subtotal + 5000; // Assuming a fixed delivery fee of $5
 
   return (
-    <div className="cart">
-      <h2 className="!text-[2.2rem] md:!text-[2.5rem] text-left md:ps-[8rem]">Cart</h2>
+    <div className=" cart">
+      <h2 className="!text-[36px] text-left md:ps-[8rem]">Cart</h2>
       {cartItems.length === 0 ? (
         <p className="text-center my-24">Your cart is empty.</p>
       ) : (
@@ -32,11 +32,11 @@ const CartPage = () => {
       )}
       {cartItems.length > 0 && (
         <div className="cart-summary  md:px-[19rem] border-t-slate-200">
-          <p className="flex justify-between"><span>Subtotal</span> <span>${subtotal.toFixed(2)}</span></p>
-          <p className="flex justify-between"><span>Delivery</span> <span>$5.00</span></p>
-          <p className="flex justify-between"><span>Total</span>  <span>${total.toFixed(2)}</span></p>
+          <p className="flex justify-between !text-[20px]"><span>Subtotal</span> <span>&#8358;{subtotal.toFixed(2)}</span></p>
+          <p className="flex justify-between !text-[20px]"><span>Delivery</span> <span>&#8358;5000.00</span></p>
+          <p className="flex justify-between !text-[20px]"><span>Total</span>  <span>&#8358;{total.toFixed(2)}</span></p>
           <div className="flex justify-center md:justify-end">
-            <Link to={"/checkout"} className="bg-[#363636] -mr-6 mt-7 md:mt-5 rounded-md px-20 py-2 text-white md:hover:text-[#363636] md:hover:bg-[#FFD2D9]">Checkout</Link>
+            <Link to={"/checkout"} className="!text-[18px] flex justify-center items-center bg-[#363636] -mr-6 mt-7 md:mt-5 rounded-md !w-[230px] !h-[50px] text-white md:hover:text-[#363636] md:hover:bg-[#FFD2D9]">Checkout</Link>
           </div>
         </div>
       )}

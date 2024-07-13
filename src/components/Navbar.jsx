@@ -41,7 +41,7 @@ const Navbar = ({toggleSearch}) => {
   }
 
   return (
-    <nav className="navbar flex justify-between items-center px-[1rem] md:px-[5rem] lg:px-[10rem] py-[15px] z-[11] sticky top-0">
+    <nav className="navbar flex justify-between items-center px-[1rem] md:px-[5rem] lg:px-[12vw] py-[15px] z-[11] sticky top-0">
         <div className="nav-logo">
           <NavLink to={"/"}>
             <img src={Logo} loading="lazy"></img>
@@ -53,13 +53,13 @@ const Navbar = ({toggleSearch}) => {
             </div>
             <ul className="navlinks flex gap-10">
                 <li>
-                  <NavLink to={"/"}>Home</NavLink>
+                  <NavLink onClick={toggleMenu} to={"/"}>Home</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/product-listing"}>Products</NavLink>
+                  <NavLink onClick={toggleMenu} to={"/product-listing"}>Products</NavLink>
                 </li>
                 <li>
-                  <NavLink to={"/contact"}> Contact</NavLink>
+                  <NavLink onClick={toggleMenu} to={"/contact"}> Contact</NavLink>
                 </li>
             </ul>
         </div>
@@ -67,23 +67,23 @@ const Navbar = ({toggleSearch}) => {
 
             <button className="darkmode-toggle" onClick={toggleDarkMode}>
                 {
-                  darkMode ? (<FaSun size={21} />) : (<FaMoon size={21} />)
+                  darkMode ? (<FaSun size={25} />) : (<FaMoon size={25} />)
                 }
             </button>
             <div>
               <NavLink to="/cart">
                 <div className='relative'>
-                  < BsCart size={21}/>
+                  < BsCart size={25}/>
                   <span className=' absolute -top-3 -right-3 px-[9px] py-[1px] rounded-full bg-[#118A11] text-white'>{cartItems.length}</span>
                 </div>
                 
               </NavLink>
             </div>
             <div onClick={toggleSearch}>
-              <FiSearch size={21} />  
+              <FiSearch size={25}/>  
             </div>
             <div className="openNav-bars text-[20px]" onClick={toggleMenu}>
-                <HiBars3 size={24} />
+                <HiBars3 size={25} />
             </div>
         </div>
         

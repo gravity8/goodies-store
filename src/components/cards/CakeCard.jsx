@@ -6,6 +6,7 @@ import "./Card.css"
 import CartContext from "../../context/CartContext";
 
 
+
 const CakeCard = ({item}) => {
   const [quantity, setQuantity] = useState(1);
   const [activeSize, setActiveSize] = useState(0);
@@ -15,13 +16,15 @@ const CakeCard = ({item}) => {
     handleAddToCart,
   } = useContext(CartContext);
 
+    const sizes = ["S","M","L"];
+
   useEffect(()=>{
     setData({
       id: item.id,
-      image: item.src,
+      image: `https://api.timbu.cloud/images/${item.photos[0]?.url}`,
       name: item.name,
-      price: item.price,
-      size: item.sizes[activeSize],
+      price: item.current_price[0].NGN[0],
+      size: sizes[activeSize],
       quantity: quantity,
     })
   },[activeSize, quantity])
@@ -43,7 +46,7 @@ const handleInputChange = (e) =>{
         <div 
           className="md:flex-[0.75] flex-auto w-[100%] h-[315px] rounded-tl-[1rem] rounded-tr-[1rem] image"
           style={{
-            backgroundImage: `url(${item.src})`, 
+            backgroundImage: `url(https://api.timbu.cloud/images/${item.photos[0]?.url})`, 
             backgroundSize:"cover", 
             backgroundPosition:"center center",
             backgroundRepeat: "no-repeat" 
@@ -56,7 +59,7 @@ const handleInputChange = (e) =>{
                 <h3>{item.name}</h3>
                 <div className="flex gap-[0.8rem]">
                   {
-                    item.sizes.length>0 && item.sizes.map((size,index)=>(
+                    ["S","M","L"].map((size,index)=>(
                       <div 
                         id={`size-${index}`}
                         className={`button  ${index===activeSize? "active" :""}`} 
@@ -73,10 +76,10 @@ const handleInputChange = (e) =>{
                 </div>
             </div>
             <div className="flex justify-between items-center quantity-counter">
-              <p className="text-[1.2rem]">${item.price}</p>
+              <p className="text-[24px]">&#8358;{item.current_price[0].NGN[0]}</p>
               <div className="flex border border-black rounded-lg">
                 <button
-                  onClick={()=>quantity>1 && setQuantity(quantity-1)}
+                  onClick={()=>quantity>1 && setQuantity(quantity-1)} 
                 >-</button>
                 <input 
                   type="text" 
