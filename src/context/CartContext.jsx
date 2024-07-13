@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { createContext } from 'react'
 import { useState, useEffect} from "react";
+import toast from "react-hot-toast";
 
 export const CartContext = createContext();
 
@@ -22,22 +23,29 @@ export const AppProvider = ({children}) =>{
   }, [cartItems]);
 
   const handleAddToCart = (item) => {
-    // Check if item already exists in cart
-    const existingItem = cartItems.find((i) => i.id === item.id);
-    if (existingItem) {
-      setCartItems(
-        cartItems.map((i) => (i.id === item.id ? { ...i, quantity: i.quantity + item.quantity } : i))
-      );
-    } else {
-      setCartItems([...cartItems, {...item}]);
-    }
-    // Update local storage
+    // Check if item with the same id and size already exists in the cart
+      const existingItem = cartItems.find((i) => i.id === item.id && i.size === item.size);
+
+      if (existingItem) {
+        setCartItems(
+          cartItems.map((i) =>
+            i.id === item.id && i.size === item.size
+              ? { ...i, quantity: i.quantity + item.quantity }
+              : i
+          )
+        );
+      } else {
+        setCartItems([...cartItems, { ...item }]);
+      }
+
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
+    
+    toast.success("Item added to cart")
   };
 
   const handleRemoveFromCart = (itemId) => {
     setCartItems(cartItems.filter((item) => item.id !== itemId));
-
+    toast.success("Item removed to cart")
   };
 
   const handleUpdateQuantity = (itemId, change) => {
