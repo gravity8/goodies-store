@@ -39,13 +39,13 @@ export const AppProvider = ({children}) =>{
       }
 
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
-    
+
     toast.success("Item added to cart")
   };
 
-  const handleRemoveFromCart = (itemId) => {
-    setCartItems(cartItems.filter((item) => item.id !== itemId));
+  const handleRemoveFromCart = (itemId, itemSize) => {
     toast.success("Item removed to cart")
+    setCartItems(cartItems.filter((item) => item.id !== itemId || item.size!==itemSize));
   };
 
   const handleUpdateQuantity = (itemId, change) => {
