@@ -76,16 +76,23 @@ const CheckoutPage = ({setSuccessMessage}) => {
 
             <div className="px-10 pt-10 h-[66%] overflow-scroll">
                 {
-                cartItems.length>0 && cartItems.map((item,index)=>(
-                  <div key={index} className="flex justify-between mb-6">
-                      <div>
-                        <p className="!text-[24px]">{item.name}</p>
-                        <p className="item-summary !text-[18px]">{item.quantity} - {item.size}</p>
-                      </div>
-                      <p className="!text-[20px]">&#8358;{item.quantity * item.price}</p>
-                  </div>
-                ))
-              }
+                  cartItems.length>0 && cartItems.map((item,index)=>(
+                    <div key={index} className="flex justify-between mb-6">
+                        <div>
+                          <p className="!text-[24px]">{item.name}</p>
+                          <p className="item-summary !text-[18px]">{item.quantity} - {item.size}</p>
+                        </div>
+                        <p className="!text-[20px]">&#8358;{item.quantity * item.price}</p>
+                    </div>
+                  ))
+                }
+                {
+                  cartItems.length===0 && 
+                    <div  className="flex justify-center items-center  mb-6">
+                        <p className="!text-[24px]">No item to display</p>
+                    </div>
+                  
+                }
             </div>
             
             
