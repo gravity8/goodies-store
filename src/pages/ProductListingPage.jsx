@@ -45,15 +45,15 @@ const ProductListingPage = ({show, setShow,  getItemForDescription}) => {
       case 'cakes':
         return <ProductLists 
           show = {show} setShow={setShow} getItemForDescription={getItemForDescription}
-          loading={loading} id={"cakes"} items={items.filter((item)=>item.categories[0]?.name==="cakes")} />
+          loading={loading} id={"cakes"} items={items?.filter((item)=>item.categories[0]?.name==="cakes")} />
       case 'pastries':
         return <ProductLists 
         show = {show} setShow={setShow}  getItemForDescription={getItemForDescription}
-        loading={loading} id={"pastries"} items={items.filter((item)=>item.categories[0]?.name==="pastries")} />
+        loading={loading} id={"pastries"} items={items?.filter((item)=>item.categories[0]?.name==="pastries")} />
       case 'bread':
         return <ProductLists 
         show = {show} setShow={setShow} getItemForDescription={getItemForDescription}
-        loading={loading} id={"bread"} items={items.filter((item)=>item.categories[0]?.name==="bread")} />
+        loading={loading} id={"bread"} items={items?.filter((item)=>item.categories[0]?.name==="bread")} />
     }
   };
 
