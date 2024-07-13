@@ -19,13 +19,11 @@ const ProductSection = ({header, show, setShow, getItemForDescription}) => {
     setLoading(true);
     axios.get(`https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
     .then((response) => {
-      console.log("response",response)
       setItems(response.data.items);
       setLoading(false);
     });
   },[])
 
-  console.log("item:" , items)
   return (
     <>
       <div className="mt-20 pb-10">

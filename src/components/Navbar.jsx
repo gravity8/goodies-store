@@ -16,6 +16,8 @@ import CartContext from '../context/CartContext';
 const Navbar = ({toggleSearch}) => {
     const [darkMode, setDarkMode] = useState(false);
     const {cartItems} = useContext(CartContext);
+
+   
   
 
     // To toggle

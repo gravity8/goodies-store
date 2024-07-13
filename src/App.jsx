@@ -10,14 +10,21 @@ import Footer from './components/Footer'
 import { FaCheck } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
 import ItemDescriptionModal from './components/itemsdescriptionmodal/ItemDescriptionModal'
+import axios from 'axios'
 
 function App() {
 
   const [successMessage, setSuccessMessage] = useState("")
   const [search, setSearch ] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState();
   const [show, setShow] = useState(false);
   const [itemToDisplay, setItemTodisplayInModal] = useState(null);
+  const [items, setItems] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  const ORG_ID = import.meta.env.VITE_ORG_ID;
+const APP_ID = import.meta.env.VITE_APP_ID;
+const API_KEY = import.meta.env.VITE_API_KEY;
 
   const toggleBodyScrollProperty = () => {
     if(show){
@@ -27,6 +34,24 @@ function App() {
       document.body.classList.remove("no-scroll")
     }
   }
+
+  useEffect(()=>{
+    axios.get(`https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
+    .then((response) => {
+      setItems(response.data.items);
+    });
+  },[])
+
+  useEffect(() => {
+    if (searchQuery) {
+      const results = items.filter(item =>
+        item.name.toLowerCase().includes(searchQuery.toLowerCase())
+      );
+      setFilteredItems(results);
+    } else {
+      setFilteredItems([]);
+    }
+  }, [searchQuery, items]);
 
   useEffect(()=>{
     toggleBodyScrollProperty();
@@ -66,6 +91,20 @@ function App() {
                 </div>
               </div>    
         </div>
+        <div className='bg-white mt-[135px] md:mt-[150px] w-[90%] md:w-[50%] mx-auto max-h-[50vh] overflow-scroll h-[fit-content] z-[400]' onClick={e=>e.stopPropagation()}>
+            {search && filteredItems.length > 0 && filteredItems.map((item, index) => (
+            <div key={index} className='mx-auto mb-5 px-8 py-4 cursor-pointer ' 
+            onClick={()=>
+              {
+                getItemForDescription(item);
+                setShow(!show)
+              }
+            }>
+              <p className='text-[24px]'>{item.name}</p>
+            </div>
+          ))}
+        </div>
+        
       </div>
       
       <Navbar toggleSearch={toggleSearch}/>

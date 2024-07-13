@@ -8,7 +8,6 @@ import { useLocation } from "react-router-dom";
 import ProductLists from "../components/productlisting/ProductLists";
 import axios from "axios";
 
-const baseUrl = import.meta.env.VITE_BASE_URL;
 const ORG_ID = import.meta.env.VITE_ORG_ID;
 const APP_ID = import.meta.env.VITE_APP_ID;
 const API_KEY = import.meta.env.VITE_API_KEY;
