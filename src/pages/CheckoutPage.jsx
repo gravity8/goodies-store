@@ -7,7 +7,7 @@ import CartContext from "../context/CartContext";
 
 const CheckoutPage = ({setSuccessMessage}) => {
 
-  const {cartItems,subtotal} = useContext(CartContext);
+  const {cartItems,subtotal, handleClearCart} = useContext(CartContext);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [streetAddress, setStreetAddress] = useState("");
@@ -19,6 +19,7 @@ const CheckoutPage = ({setSuccessMessage}) => {
   const total = subtotal + 5000;
 
   const handleOrder = () =>{
+    handleClearCart();
     setSuccessMessage("Order has been placed successfully.")
   }
   return (

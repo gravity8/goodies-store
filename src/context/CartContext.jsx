@@ -47,6 +47,10 @@ export const AppProvider = ({children}) =>{
       )
     );
   };
+  const handleClearCart = () => {
+    setCartItems([]);
+    localStorage.removeItem('cartItems');
+  };
 
   return (
     <CartContext.Provider 
@@ -56,6 +60,7 @@ export const AppProvider = ({children}) =>{
         handleAddToCart,
         handleRemoveFromCart,
         handleUpdateQuantity,
+        handleClearCart,
         subtotal: cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0),
       }}
     >
