@@ -70,11 +70,11 @@ const CheckoutPage = ({setSuccessMessage}) => {
             onClick={handleOrder}
           >Place Order</button>
         </div>
-        <div className="flex flex-col w-full md:w-[50%] gap-10 !h-[712px] overflow-hidden mt-[87px] md:mt-[0]">
+        <div className="flex flex-col w-full md:w-[50%] gap-10 !h-[650px] overflow-hidden mt-[87px] md:mt-[0]">
           <div className="mb-10 bg-[#fdf8fb] shadow-md rounded-[5px] relative flex-1 order-summary h-[60%]">
             <h2 className="!text-[28px]">Order Summary</h2>
 
-            <div className="px-10 pt-10 h-[65%] overflow-scroll">
+            <div className="px-10 pt-10 h-[70%] overflow-scroll">
                 {
                 cartItems.length>0 && cartItems.map((item,index)=>(
                   <div key={index} className="flex justify-between mb-6">
