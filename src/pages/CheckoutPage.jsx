@@ -15,7 +15,6 @@ const CheckoutPage = ({setSuccessMessage}) => {
   const [city, setCity] = useState("");
   const [phone, setPhone] = useState("");
 
-  console.log(cartItems)
 
   const total = subtotal + 5000;
 
@@ -74,7 +73,7 @@ const CheckoutPage = ({setSuccessMessage}) => {
           <div className="mb-10 bg-[#fdf8fb] shadow-md rounded-[5px] relative flex-1 order-summary h-[60%]">
             <h2 className="!text-[28px]">Order Summary</h2>
 
-            <div className="px-10 pt-10 h-[70%] overflow-scroll">
+            <div className="px-10 pt-10 h-[66%] overflow-scroll">
                 {
                 cartItems.length>0 && cartItems.map((item,index)=>(
                   <div key={index} className="flex justify-between mb-6">

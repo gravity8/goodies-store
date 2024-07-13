@@ -13,7 +13,7 @@ const ORG_ID = import.meta.env.VITE_ORG_ID;
 const APP_ID = import.meta.env.VITE_APP_ID;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const ProductListingPage = () => {
+const ProductListingPage = ({show, setShow}) => {
   const location = useLocation();
   const [activeOption, setActiveOption] = useState("cakes");
   const [items, setItems] = useState([]);
@@ -43,11 +43,17 @@ const ProductListingPage = () => {
   const renderItems = () => {
     switch (activeOption) {
       case 'cakes':
-        return <ProductLists loading={loading} id={"cakes"} items={items.filter((item)=>item.categories[0]?.name==="cakes")} />
+        return <ProductLists 
+          show = {show} setShow={setShow}
+          loading={loading} id={"cakes"} items={items.filter((item)=>item.categories[0]?.name==="cakes")} />
       case 'pastries':
-        return <ProductLists loading={loading} id={"pastries"} items={items.filter((item)=>item.categories[0]?.name==="pastries")} />
+        return <ProductLists 
+        show = {show} setShow={setShow}
+        loading={loading} id={"pastries"} items={items.filter((item)=>item.categories[0]?.name==="pastries")} />
       case 'bread':
-        return <ProductLists loading={loading} id={"bread"} items={items.filter((item)=>item.categories[0]?.name==="bread")} />
+        return <ProductLists 
+        show = {show} setShow={setShow}
+        loading={loading} id={"bread"} items={items.filter((item)=>item.categories[0]?.name==="bread")} />
     }
   };
 

@@ -11,7 +11,7 @@ const ORG_ID = import.meta.env.VITE_ORG_ID;
 const APP_ID = import.meta.env.VITE_APP_ID;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const ProductSection = ({header}) => {
+const ProductSection = ({header, show, setShow}) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false)
 
@@ -105,10 +105,10 @@ const ProductSection = ({header}) => {
             <div className="px-8 md:px-[12vw] flex-col md:flex-row flex flex-wrap w-full gap-16 md:gap-2">
               {
                 items?.length>0 && 
-                items.filter((item)=>item.categories[0].name===header.toLowerCase())
+                items.filter((item)=>item?.categories[0].name===header.toLowerCase())
                       .slice(0,6)
                       .map((item, index)=>(
-                        <CakeCard  key={index} item={item}/>
+                        <CakeCard show={show} setShow={setShow} key={index} item={item}/>
                       ))
               }
             </div>

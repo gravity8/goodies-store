@@ -9,12 +9,16 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import { FaCheck } from "react-icons/fa";
 import { FiSearch } from "react-icons/fi";
+import ItemDescriptionModal from './components/itemsdescriptionmodal/ItemDescriptionModal'
 
 function App() {
 
   const [successMessage, setSuccessMessage] = useState("")
   const [search, setSearch ] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
+  const [show, setShow] = useState(false);
+
+  console.log(show)
 
   const toggleBodyScrollProperty = () => {
     if(successMessage || search){
@@ -63,8 +67,8 @@ function App() {
       
       <Navbar toggleSearch={toggleSearch}/>
       <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route path="/product-listing" element={<ProductListingPage />} />
+        <Route path="/" element={<Home show={show} setShow={setShow}/>}/>
+        <Route path="/product-listing" element={<ProductListingPage show={show} setShow={setShow}/>} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage setSuccessMessage={setSuccessMessage}/>} />
       </Routes>
@@ -79,6 +83,8 @@ function App() {
           </div>
         </div>
       )}
+
+      <ItemDescriptionModal show={show} setShow={setShow}/>
     </div>
   )
 }

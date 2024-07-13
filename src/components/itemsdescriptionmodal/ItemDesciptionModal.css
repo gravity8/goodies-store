@@ -1,0 +1,28 @@
+.item-description-card{
+    width: 0;
+    height: 0;
+    background-color: var(--complementary);
+    justify-content: center;
+    align-items: center;
+    transition: all 0.4s ease;
+}
+
+.item-description-card.show{
+    width: 55vw;
+    height: 75vh;
+}
+.modal-bg{
+    visibility:hidden;
+    display: flex;
+}
+.modal-bg.show{
+    visibility: visible;
+    display: flex;
+}
+
+@media (max-width:768px) {
+    .item-description-card{
+        width: 95vw;
+        height: unset;
+    }
+}

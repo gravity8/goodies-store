@@ -4,7 +4,7 @@ import CakeCard from "../cards/CakeCard"
 import { Puff } from "react-loader-spinner";
 
 
-const ProductLists = ({id, items,loading}) => {
+const ProductLists = ({id, items,loading,show, setShow}) => {
 
   return (
     <>
@@ -24,7 +24,9 @@ const ProductLists = ({id, items,loading}) => {
     <div id={id} className="w-full flex flex-wrap gap-16 md:gap-2 mt-[33px]">
       {
         items?.length>0 && items.map((item,index)=>(
-          <CakeCard key={index} item={item}/>
+          <CakeCard 
+          show = {show} setShow={setShow}
+          key={index} item={item}/>
         ))
       }
     </div>
