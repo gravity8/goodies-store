@@ -51,7 +51,7 @@ const handleInputChange = (e) =>{
   return (
     <div className="flex flex-col rounded-[1rem] card">
         <div 
-          className="md:flex-[0.75] flex-auto w-[100%] h-[315px] rounded-tl-[1rem] rounded-tr-[1rem] image"
+          className="flex-[0.6] md:flex-[0.75] w-[100%] !h-[240px] md:h-[315px] rounded-tl-[1rem] rounded-tr-[1rem] image"
           style={{
             backgroundImage: `url(https://api.timbu.cloud/images/${item.photos[0]?.url})`, 
             backgroundSize:"cover", 
