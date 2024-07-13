@@ -3,7 +3,7 @@
       { "source": "/(.*)", "destination": "/" },
       {
         "source": "/api/(.*)",
-        "destination": "https://api.timbu.cloud/$1"
+        "destination": "https://timbu-get-all-products.reavdev.workers.dev"
       }
     ]
 }
