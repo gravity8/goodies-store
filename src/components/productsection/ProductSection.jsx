@@ -17,7 +17,7 @@ const ProductSection = ({header, show, setShow, getItemForDescription}) => {
 
   useEffect(()=>{
     setLoading(true);
-    axios.get(`/api/products?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
+    axios.get(`https://timbu-get-all-products.reavdev.workers.dev/?organization_id=141562c0c7314bbead1727e9371b4126&Appid=ZLJ0VXMP6E246V8&Apikey=5cd8c5896ef647bcaca7d72f7d4548de20240712162009864060`)
     .then((response) => {
       console.log("response",response)
       setItems(response.data.items);
