@@ -21,7 +21,7 @@ const ProductListingPage = ({show, setShow,  getItemForDescription}) => {
 
   useEffect(()=>{
     setLoading(true);
-    axios.get(`/api/products?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
+    axios.get(`https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
     .then((response) => {
       setItems(response.data.items);
       setLoading(false);
