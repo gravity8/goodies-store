@@ -46,7 +46,7 @@ const ProductSection = ({header, show, setShow, getItemForDescription}) => {
               wrapperClass=""
             />
             :
-            <div className="px-8 md:px-[12vw] flex-col md:flex-row flex flex-wrap w-full gap-16 md:gap-2">
+            <div className="px-5 md:px-[12vw] flex-col md:flex-row flex flex-wrap w-full gap-16 md:gap-2">
               {
                 items?.length>0 && 
                 items?.filter((item)=>item?.categories[0].name===header.toLowerCase())
