@@ -11,7 +11,7 @@ const ORG_ID = import.meta.env.VITE_ORG_ID;
 const APP_ID = import.meta.env.VITE_APP_ID;
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-const ProductSection = ({header, show, setShow}) => {
+const ProductSection = ({header, show, setShow, getItemForDescription}) => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(false)
 
@@ -108,7 +108,7 @@ const ProductSection = ({header, show, setShow}) => {
                 items.filter((item)=>item?.categories[0].name===header.toLowerCase())
                       .slice(0,6)
                       .map((item, index)=>(
-                        <CakeCard show={show} setShow={setShow} key={index} item={item}/>
+                        <CakeCard show={show} setShow={setShow} key={index} item={item} getItemForDescription={getItemForDescription}/>
                       ))
               }
             </div>

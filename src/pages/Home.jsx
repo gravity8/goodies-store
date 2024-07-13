@@ -3,13 +3,13 @@ import React from "react"
 import Header from "../components/Header"
 import ProductSection from "../components/productsection/ProductSection"
 
-const Home = ({show, setShow}) => {
+const Home = ({show, setShow, getItemForDescription}) => {
   return (
     <React.Fragment>
       <Header />
-      <ProductSection show={show} setShow={setShow} header={"Cakes"}/>
-      <ProductSection show={show} setShow={setShow} header={"Pastries"}/>
-      <ProductSection show={show} setShow={setShow} header={"Bread"}/>
+      <ProductSection show={show} setShow={setShow} header={"Cakes"} getItemForDescription={getItemForDescription}/>
+      <ProductSection show={show} setShow={setShow} header={"Pastries"} getItemForDescription={getItemForDescription}/>
+      <ProductSection show={show} setShow={setShow} header={"Bread"} getItemForDescription={getItemForDescription}/>
     </React.Fragment>
   )
 }

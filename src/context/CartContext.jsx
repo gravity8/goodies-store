@@ -17,9 +17,9 @@ export const AppProvider = ({children}) =>{
     }
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem('cartItems', JSON.stringify(cartItems));
-  // }, [cartItems]);
+  useEffect(() => {
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
+  }, [cartItems]);
 
   const handleAddToCart = (item) => {
     // Check if item already exists in cart

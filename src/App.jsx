@@ -17,11 +17,10 @@ function App() {
   const [search, setSearch ] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [show, setShow] = useState(false);
-
-  console.log(show)
+  const [itemToDisplay, setItemTodisplayInModal] = useState(null);
 
   const toggleBodyScrollProperty = () => {
-    if(successMessage || search){
+    if(show){
       document.body.classList.add("no-scroll")
     }
     else{
@@ -31,7 +30,7 @@ function App() {
 
   useEffect(()=>{
     toggleBodyScrollProperty();
-  },[successMessage, search])
+  },[show])
 
   const toggleSearch= () =>{
     setSearch(!search);
@@ -42,6 +41,10 @@ function App() {
     toggleSearch()
   }
   
+  const  getItemForDescription = (itemToDisplay) =>{
+    setItemTodisplayInModal(itemToDisplay)
+  }
+
   return (
     <div className='relative w-full'>
       <div 
@@ -67,8 +70,8 @@ function App() {
       
       <Navbar toggleSearch={toggleSearch}/>
       <Routes>
-        <Route path="/" element={<Home show={show} setShow={setShow}/>}/>
-        <Route path="/product-listing" element={<ProductListingPage show={show} setShow={setShow}/>} />
+        <Route path="/" element={<Home show={show} setShow={setShow} getItemForDescription={getItemForDescription}/> }/>
+        <Route path="/product-listing" element={<ProductListingPage show={show} setShow={setShow}  getItemForDescription={getItemForDescription}/>} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="/checkout" element={<CheckoutPage setSuccessMessage={setSuccessMessage}/>} />
       </Routes>
@@ -84,7 +87,7 @@ function App() {
         </div>
       )}
 
-      <ItemDescriptionModal show={show} setShow={setShow}/>
+      <ItemDescriptionModal item={itemToDisplay} show={show} setShow={setShow}/>
     </div>
   )
 }

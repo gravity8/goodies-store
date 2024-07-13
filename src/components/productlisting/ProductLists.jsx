@@ -4,13 +4,12 @@ import CakeCard from "../cards/CakeCard"
 import { Puff } from "react-loader-spinner";
 
 
-const ProductLists = ({id, items,loading,show, setShow}) => {
+const ProductLists = ({id, items,loading,show, setShow, getItemForDescription}) => {
 
   return (
     <>
     {
       loading ? 
-      
       <Puff
         visible={true}
         height="50"
@@ -26,7 +25,7 @@ const ProductLists = ({id, items,loading,show, setShow}) => {
         items?.length>0 && items.map((item,index)=>(
           <CakeCard 
           show = {show} setShow={setShow}
-          key={index} item={item}/>
+          key={index} item={item} getItemForDescription={getItemForDescription}/>
         ))
       }
     </div>

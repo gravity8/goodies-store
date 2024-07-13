@@ -7,30 +7,23 @@ import CartContext from "../../context/CartContext";
 
 
 
-const CakeCard = ({item, show, setShow}) => {
+const CakeCard = ({item, show, setShow, getItemForDescription}) => {
   const [quantity, setQuantity] = useState(1);
   const [activeSize, setActiveSize] = useState(0);
   const [data,setData] = useState({});
-
-  const toggleBodyScrollProperty = () => {
-    if(!show){
-      document.body.classList.add("no-scroll")
-    }
-    else{
-      document.body.classList.remove("no-scroll")
-    }
-  }
-
-  const handleItemDescriptionModal = () =>{
-      toggleBodyScrollProperty()
-      setShow(!show)
-  }
-
+  
   const {
     handleAddToCart,
   } = useContext(CartContext);
+  
+
+  const handleItemDescriptionModal = (item) =>{
+      setShow(!show)
+      getItemForDescription(item)
+  }
 
     const sizes = ["S","M","L"];
+
 
   useEffect(()=>{
     setData({
@@ -67,7 +60,7 @@ const handleInputChange = (e) =>{
           }}
         >
           <div className="card-image-overlay flex justify-center items-center rounded-tl-[1rem] rounded-tr-[1rem]">
-            <button className="!w-[50%] !h-[40px]" onClick={handleItemDescriptionModal}>View more</button>
+            <button className="!w-[50%] !h-[40px]" onClick={()=>handleItemDescriptionModal(item)}>View more</button>
           </div>
         </div>
         <div className=" flex-[0.25] flex flex-col px-7 gap-2 py-5">
