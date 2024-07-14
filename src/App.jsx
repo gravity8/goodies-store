@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react'
 import './App.css'
 import { Routes, Route } from 'react-router-dom'
@@ -36,7 +37,7 @@ const API_KEY = import.meta.env.VITE_API_KEY;
   }
 
   useEffect(()=>{
-    axios.get(`https://timbu-get-all-products.reavdev.workers.dev/?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
+    axios.get(`https://timbu-get-all-products.reavdev.workers.dev?organization_id=${ORG_ID}&Appid=${APP_ID}&Apikey=${API_KEY}`)
     .then((response) => {
       setItems(response.data.items);
     });
